@@ -3,7 +3,7 @@ import "./estilo.css";
 class FormularioCadastro extends Component {
 
   constructor(props){
-    super(props);           {/* chamando propriedade  */} 
+    super(props);
     this.titulo ="";
     this.texto ="";
   }
@@ -24,23 +24,11 @@ class FormularioCadastro extends Component {
     this.props.criarNota(this.titulo, this.texto);
     
   }
-      
-
-  _handleMudancaTexto(evento){   {/* _ QUER DIZER ATRIBUTO PRIVADO  */}
-   this.texto = evento.target.value;
-  }    
-
-  criarNota(evento){             {/* evento cria nota  */}
-    evento.preventDefault();
-    evento.stopPropagation();
-    this.props.criarNota(this.titulo, this.texto);      {/* referenciado pela criar nota acessando elemento pelo pai props  */}
-  }
- 
 
   render() {
     return (
       <form className="form-cadastro"
-        onSubmit={this._criarNota.bind(this)} 
+        onSubmit={this._criarNota.bind(this)}
       >
         <input
           type="text"
@@ -48,15 +36,13 @@ class FormularioCadastro extends Component {
           className="form-cadastro_input"
           onChange={this._handleMudancaTitulo.bind(this)}
         />
-
-        {/* define as linhas do textt area ROWS */}
-        <textarea                
-          rows={15}                
+        <textarea
+          rows={15}
           placeholder="Escreva sua nota..."
           className="form-cadastro_input"
           onChange={this._handleMudancaTexto.bind(this)}
         />
-        <button className="form-cadastro_input form-cadastro_submit">           
+        <button className="form-cadastro_input form-cadastro_submit">
           Criar Nota
         </button>
       </form>
